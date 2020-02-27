@@ -6,6 +6,7 @@ import (
 	irisrecover "github.com/kataras/iris/middleware/recover"
 	"github.com/sirupsen/logrus"
 	"go-demo/infra"
+	"net/http"
 	"time"
 )
 
@@ -33,6 +34,13 @@ func (i *IrisStarter) Start(ctx infra.StarterContext) {
 	for _, r := range routes {
 		logrus.Info(r.Trace())
 	}
+	// todo 统一处理 HTTP 错误码
+	Iris().OnAnyErrorCode(func(context iris.Context) {
+		context.WriteString("something go wrong")
+	})
+	Iris().OnErrorCode(http.StatusNotFound, func(context iris.Context) {
+		context.WriteString("oh hoo find nothing")
+	})
 	// 启动 iris
 	port := ctx.Props().GetDefault("app.server.port", "80")
 	Iris().Run(iris.Addr(":" + port))
