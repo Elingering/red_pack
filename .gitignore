@@ -1,3 +1,4 @@
 .idea/*
 logs/*
 core/accounts/logs/*
+core/envelopes/logs/*

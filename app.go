@@ -3,6 +3,7 @@ package go_demo
 import (
 	_ "go-demo/apis/web"
 	_ "go-demo/core/accounts"
+	_ "go-demo/core/envelopes"
 	"go-demo/infra"
 	"go-demo/infra/base"
 )
