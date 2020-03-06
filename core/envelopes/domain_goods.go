@@ -13,7 +13,7 @@ import (
 
 type goodsDomain struct {
 	RedEnvelopeGoods
-	//item itemDomain
+	item itemDomain
 }
 
 //生成一个红包编号

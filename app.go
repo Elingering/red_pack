@@ -7,6 +7,7 @@ import (
 	_ "go-demo/core/envelopes"
 	"go-demo/infra"
 	"go-demo/infra/base"
+	"go-demo/jobs"
 )
 
 func init() {
@@ -15,6 +16,7 @@ func init() {
 	infra.Register(&base.ValidatorStarter{})
 	infra.Register(&base.GoRPCStarter{})
 	infra.Register(&gorpc.GoRpcApiStarter{})
+	infra.Register(&jobs.RefundExpiredJobStarter{})
 	infra.Register(&base.IrisStarter{})
 	infra.Register(&infra.WebApiStarter{})
 }
